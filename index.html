@@ -11,7 +11,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:       #0e0e12;
-  --bg2:      #13131a;
+  --bg2:      #1a1a26;
   --bg3:      #1a1a24;
   --border:   #22222e;
   --border2:  #2e2e3e;
@@ -30,15 +30,29 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:14px;line-height:1.7;overflow-x:hidden}
 
-/* NAV */
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;height:48px;background:rgba(14,14,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 2rem;z-index:100;gap:2rem}
 .nav-logo{font-weight:600;font-size:13px;color:var(--str);text-decoration:none;margin-right:auto;letter-spacing:0.04em}
 .nav-logo span{color:var(--muted)}
 nav a.lnk{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:0.04em;transition:color 0.2s}
 nav a.lnk:hover{color:var(--text)}
 nav a.lnk::before{content:'// ';color:var(--comment)}
+nav a.lnk.active{color:var(--str)}
+nav a.lnk.active::before{color:var(--str)}
 
-/* HERO */
+/* hamburger */
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;cursor:pointer;padding:4px;margin-left:auto;background:none;border:none}
+.hamburger span{display:block;width:18px;height:1px;background:var(--muted);transition:all 0.25s}
+.hamburger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mobile-nav{display:none;position:fixed;top:48px;left:0;right:0;background:rgba(14,14,18,0.97);border-bottom:1px solid var(--border);flex-direction:column;padding:1rem 2rem;gap:1rem;z-index:99}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:0.04em;padding:6px 0;border-bottom:1px solid var(--border)}
+.mobile-nav a::before{content:'// ';color:var(--comment)}
+.mobile-nav a:last-child{border-bottom:none}
+
+/* ── HERO ── */
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 2rem 4rem;max-width:860px;margin:0 auto}
 .hero-comment{font-size:12px;color:var(--comment);margin-bottom:1.5rem;letter-spacing:0.04em}
 .hero-block{margin-bottom:2rem}
@@ -61,7 +75,7 @@ nav a.lnk::before{content:'// ';color:var(--comment)}
 .btn-g{background:transparent;color:var(--muted);outline:1px solid var(--border2)}
 .btn-g:hover{outline-color:var(--muted);color:var(--text)}
 
-/* SECTIONS */
+/* ── SECTIONS ── */
 section{max-width:860px;margin:0 auto;padding:5rem 2rem}
 .sec-comment{font-size:11px;color:var(--comment);letter-spacing:0.08em;margin-bottom:0.5rem}
 h2{font-family:var(--mono);font-size:clamp(1.2rem,3vw,1.8rem);font-weight:600;color:var(--text);margin-bottom:2.5rem;letter-spacing:-0.01em}
@@ -69,16 +83,18 @@ h2 .h-kw{color:var(--kw)}
 h2 .h-fn{color:var(--fn)}
 hr.div{border:none;border-top:1px solid var(--border);margin:0}
 
-/* PROJECT CARDS */
+/* ── PROJECT CARDS ── */
 .pcard{border:1px solid var(--border);background:var(--bg2);margin-bottom:1.5rem;transition:border-color 0.2s}
 .pcard:hover{border-color:var(--border2)}
+.pcard.featured{border-left:2px solid var(--str)}
 .phead{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
 .pnum{font-size:11px;color:var(--comment);margin-bottom:3px;letter-spacing:0.06em}
 .ptitle{font-size:1.1rem;font-weight:600;color:var(--fn);margin-bottom:2px}
 .psub{font-size:11px;color:var(--muted);letter-spacing:0.04em}
-.plinks{display:flex;gap:8px;flex-shrink:0}
+.plinks{display:flex;gap:8px;flex-shrink:0;align-items:center}
 .plnk{font-size:11px;color:var(--muted);text-decoration:none;padding:5px 12px;border:1px solid var(--border);letter-spacing:0.04em;transition:all 0.2s;white-space:nowrap}
 .plnk:hover{color:var(--str);border-color:var(--str)}
+.featured-badge{font-size:9px;letter-spacing:0.1em;padding:2px 8px;background:rgba(122,184,160,0.12);color:var(--str);border:1px solid rgba(122,184,160,0.3);text-transform:uppercase}
 .pbody{padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .pdesc{font-size:12px;color:var(--muted);line-height:1.85;font-family:var(--sans);font-weight:300}
 .flist{list-style:none}
@@ -92,21 +108,48 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .tag.fn{border-color:rgba(200,164,110,0.3);color:var(--fn)}
 .tag.tp{border-color:rgba(106,159,216,0.3);color:var(--type)}
 
-/* VIDEO PLACEHOLDER */
+/* video embed */
 .vph{background:var(--bg3);border:1px dashed var(--border2);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--comment);font-size:11px;margin-bottom:1rem;letter-spacing:0.05em}
 .vph svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5;opacity:0.5}
+.yt-thumb{display:block;position:relative;margin-bottom:1rem;overflow:hidden;text-decoration:none;aspect-ratio:16/9;background:var(--bg3)}
+.yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;filter:brightness(0.75);transition:filter 0.25s}
+.yt-thumb:hover img{filter:brightness(0.55)}
+.yt-play{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:opacity 0.2s}
+.yt-play svg{width:44px;height:44px;fill:none;stroke:#fff;stroke-width:1.5;opacity:0.9;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.6))}
+.yt-thumb:hover .yt-play svg{stroke:var(--str)}
+.yt-label{font-size:10px;letter-spacing:0.1em;color:rgba(255,255,255,0.7);text-transform:uppercase;font-family:var(--mono)}
 
-/* SKILLS */
+/* ── SKILLS ── */
 .sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
 .sgroup{background:var(--bg2);padding:1.1rem 1.25rem}
 .stitle{font-size:10px;color:var(--comment);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.7rem}
-.sitem{font-size:12px;color:var(--muted);padding:2px 0;display:flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:300}
+.sitem{font-size:12px;color:var(--muted);padding:3px 0;display:flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:300}
 .sitem::before{content:'';width:4px;height:4px;background:var(--border2);flex-shrink:0}
 .sitem.hi{color:var(--str)}.sitem.hi::before{background:var(--str)}
 .sitem.md{color:var(--kw)}.sitem.md::before{background:var(--kw)}
 .sitem.fn{color:var(--fn)}.sitem.fn::before{background:var(--fn)}
+.prof{display:flex;gap:3px;margin-left:auto;flex-shrink:0}
+.prof i{display:block;width:5px;height:5px;border:1px solid var(--border2)}
+.prof i.on{background:var(--str);border-color:var(--str)}
+.sitem.md .prof i.on{background:var(--kw);border-color:var(--kw)}
+.sitem.fn .prof i.on{background:var(--fn);border-color:var(--fn)}
 
-/* ABOUT */
+/* ── TIMELINE (career) ── */
+.timeline{position:relative;padding-left:1.25rem}
+.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--border)}
+.tentry{position:relative;padding:0 0 2.25rem 1.5rem}
+.tentry:last-child{padding-bottom:0}
+.tentry::before{content:'';position:absolute;left:-5px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--bg2);border:1px solid var(--border2)}
+.tentry.current::before{background:var(--str);border-color:var(--str)}
+.tentry.edu::before{background:var(--type);border-color:var(--type)}
+.tdate{font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;margin-bottom:4px}
+.ttype{display:inline-block;font-size:9px;letter-spacing:0.1em;padding:1px 6px;margin-left:6px;text-transform:uppercase;border:1px solid var(--border2);color:var(--comment);vertical-align:middle}
+.ttype.edu{border-color:rgba(106,159,216,0.3);color:var(--type)}
+.ttitle{font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px}
+.trole{font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em}
+.tdesc{font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7}
+
+/* ── ABOUT ── */
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
 .atext{font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans);font-weight:300}
 .atext p+p{margin-top:1rem}
@@ -116,22 +159,27 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .stat-n{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--fn);line-height:1;margin-bottom:4px}
 .stat-l{font-size:10px;color:var(--comment);letter-spacing:0.1em;text-transform:uppercase}
 
-/* CONTACT */
+/* ── CONTACT ── */
 .cinner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
 .clinks{display:flex;flex-direction:column;gap:12px}
 .clnk{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s;font-family:var(--sans)}
 .clnk:hover{color:var(--str)}
 .clnk svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
 
+/* ── FOOTER ── */
 footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .fcopy{font-size:11px;color:var(--comment);letter-spacing:0.04em}
+.back-top{font-size:11px;color:var(--comment);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.back-top:hover{color:var(--str)}
 
-@media(max-width:640px){
-  .pbody,.agrid{grid-template-columns:1fr}
-  nav a.lnk{display:none}
-  .nav-logo{margin-right:0}
-}
+/* ── REVEAL ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-d1{transition-delay:0.08s}
+.reveal-d2{transition-delay:0.16s}
+.reveal-d3{transition-delay:0.24s}
 
+/* ── HERO ANIMATIONS ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .fu{opacity:0;animation:fadeUp 0.55s ease forwards}
 .fu:nth-child(1){animation-delay:0.05s}
@@ -139,26 +187,47 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 .fu:nth-child(3){animation-delay:0.25s}
 .fu:nth-child(4){animation-delay:0.35s}
 .fu:nth-child(5){animation-delay:0.45s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .pbody,.agrid{grid-template-columns:1fr}
+  nav a.lnk{display:none}
+  .nav-logo{margin-right:0}
+  .hamburger{display:flex}
+  .plinks{flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
 
 <nav>
   <a href="#hero" class="nav-logo"><span>~/</span>portfolio</a>
-  <a href="#projects" class="lnk">projects</a>
-  <a href="#skills" class="lnk">skills</a>
-  <a href="#career" class="lnk">career</a>
-  <a href="#about" class="lnk">about</a>
-  <a href="#contact" class="lnk">contact</a>
+  <a href="#projects" class="lnk" data-section="projects">projects</a>
+  <a href="#skills"   class="lnk" data-section="skills">skills</a>
+  <a href="#career"   class="lnk" data-section="career">career</a>
+  <a href="#about"    class="lnk" data-section="about">about</a>
+  <a href="#contact"  class="lnk" data-section="contact">contact</a>
+  <button class="hamburger" id="hamburger" aria-label="menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<div class="mobile-nav" id="mobileNav">
+  <a href="#projects" class="mobile-link">projects</a>
+  <a href="#skills"   class="mobile-link">skills</a>
+  <a href="#career"   class="mobile-link">career</a>
+  <a href="#about"    class="mobile-link">about</a>
+  <a href="#contact"  class="mobile-link">contact</a>
+</div>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero">
-  <div class="hero-comment fu">// Graphics &amp; Engine Programmer</div>
+  <div class="hero-comment fu">// C++ Engine &amp; Systems Programmer</div>
   <div class="hero-block">
     <span class="hl fu"><span class="hl-kw">const</span> <span class="hl-type">engineer</span> <span class="hl-punct">= {</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: </span><span class="hl-str">"C++"</span><span class="hl-punct">,</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"C"</span><span class="hl-punct">, </span><span class="hl-str">"C#"</span><span class="hl-punct">],</span></span>
     <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">api</span><span class="hl-punct">: [</span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 11"</span><span class="hl-punct">, </span><span class="hl-str">"Unreal Engine"</span><span class="hl-punct">],</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">research</span><span class="hl-punct">: </span><span class="hl-str">"FFT ocean simulation"</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">research</span><span class="hl-punct">: [</span><span class="hl-str">"FFT ocean simulation"</span><span class="hl-punct">, </span><span class="hl-str">"ECS / GPU systems"</span><span class="hl-punct">]</span></span>
     <span class="hl fu"><span class="hl-punct">};</span></span>
   </div>
   <p class="hero-desc fu">
@@ -183,28 +252,32 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 
 <hr class="div">
 
+<!-- ═══════════════════ PROJECTS ═══════════════════ -->
 <section id="projects">
-  <div class="sec-comment">/* 02 — work */</div>
-  <h2><span class="h-kw">function</span> <span class="h-fn">projects</span>() {</h2>
+  <div class="sec-comment reveal">/* 02 — work */</div>
+  <h2 class="reveal"><span class="h-kw">function</span> <span class="h-fn">projects</span>() {</h2>
 
-  <!-- PROJECT 01 -->
-  <div class="pcard">
+  <!-- PROJECT 01 — featured -->
+  <div class="pcard featured reveal">
     <div class="phead">
       <div>
-        <div class="pnum">// 01 — featured</div>
+        <div class="pnum">// 01 — <span class="featured-badge">featured</span></div>
         <div class="ptitle">D3D12HelloOcean</div>
         <div class="psub">DirectX 12 · JONSWAP FFT Ocean · Full Post-Processing Pipeline · PBR Ship</div>
       </div>
       <div class="plinks">
         <a href="https://github.com/bourbon-love/D3D12HelloOcean" target="_blank" class="plnk">GitHub ↗</a>
-        <a href="https://youtu.be/7AlJAtE4OF4" target="_blank" class="plnk">Demo ↗</a>
       </div>
     </div>
     <div class="pbody">
       <div>
-        <div class="vph" style="position:relative;padding:0;overflow:hidden">
-          <iframe src="https://www.youtube.com/embed/7AlJAtE4OF4" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
-        </div>
+        <a href="https://youtu.be/7AlJAtE4OF4" target="_blank" class="yt-thumb">
+          <img src="https://img.youtube.com/vi/7AlJAtE4OF4/hqdefault.jpg" alt="D3D12HelloOcean demo">
+          <div class="yt-play">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"/></svg>
+            <span class="yt-label">// watch on YouTube</span>
+          </div>
+        </a>
         <p class="pdesc">
           DirectX 12とC++20で構築したリアルタイム海洋レンダラー。JONSWAPスペクトルベースのGPU FFTによる無限海面シミュレーション、体積雲レイマーチング、フルポストプロセスパイプラインを実装。GLTFランタイムローダーによるPBR船体（Cook-Torrance GGX）とバネ-ダンパー浮力物理も含む。
         </p>
@@ -237,7 +310,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   </div>
 
   <!-- PROJECT 02 -->
-  <div class="pcard">
+  <div class="pcard reveal reveal-d1">
     <div class="phead">
       <div>
         <div class="pnum">// 02</div>
@@ -245,15 +318,18 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
         <div class="psub">DirectX 11 · Skeletal Animation · Boss AI · Quadrant Arena System</div>
       </div>
       <div class="plinks">
-        <a href="https://github.com/bourbon-love/3D_ActionRPG" target="_blank" class="plnk">GitHub ↗</a>
-        <a href="https://youtu.be/9BKswS41NkY" target="_blank" class="plnk">Demo ↗</a>
+        <a href="https://github.com/bourbon-love/3D_ActionGame" target="_blank" class="plnk">GitHub ↗</a>
       </div>
     </div>
     <div class="pbody">
       <div>
-        <div class="vph" style="position:relative;padding:0;overflow:hidden">
-          <iframe src="https://www.youtube.com/embed/9BKswS41NkY" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
-        </div>
+        <a href="https://youtu.be/9BKswS41NkY" target="_blank" class="yt-thumb">
+          <img src="https://img.youtube.com/vi/9BKswS41NkY/hqdefault.jpg" alt="3D Action RPG demo">
+          <div class="yt-play">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"/></svg>
+            <span class="yt-label">// watch on YouTube</span>
+          </div>
+        </a>
         <p class="pdesc">
           C++とDirectX 11で自作したハック＆スラッシュRPG。4エリア構成のアリーナ進行に、エネルギー管理付き飛剣コンボシステム、3フェーズボス戦、Assimpスケルタルアニメーションブレンドコントローラーを実装。
         </p>
@@ -282,7 +358,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   </div>
 
   <!-- PROJECT 03 -->
-  <div class="pcard">
+  <div class="pcard reveal reveal-d2">
     <div class="phead">
       <div>
         <div class="pnum">// 03</div>
@@ -291,14 +367,17 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       </div>
       <div class="plinks">
         <a href="https://github.com/bourbon-love/3DMINEGAME" target="_blank" class="plnk">GitHub ↗</a>
-        <a href="https://youtu.be/4HiV34tTbH0" target="_blank" class="plnk">Demo ↗</a>
       </div>
     </div>
     <div class="pbody">
       <div>
-        <div class="vph" style="position:relative;padding:0;overflow:hidden">
-          <iframe src="https://www.youtube.com/embed/4HiV34tTbH0" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%"></iframe>
-        </div>
+        <a href="https://youtu.be/4HiV34tTbH0" target="_blank" class="yt-thumb">
+          <img src="https://img.youtube.com/vi/4HiV34tTbH0/hqdefault.jpg" alt="3D Mine Game demo">
+          <div class="yt-play">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"/></svg>
+            <span class="yt-label">// watch on YouTube</span>
+          </div>
+        </a>
         <p class="pdesc">
           マインスイーパーコンセプトから発展させた3Dタクティカルゲーム。シングルプレイ（15×15）・最大4人マルチプレイバトル（30×30）・インゲームマップエディターを実装。手書きHLSLシェーダーとレンダーテクスチャ2パスパイプライン。
         </p>
@@ -323,7 +402,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   </div>
 
   <!-- PROJECT 04 -->
-  <div class="pcard">
+  <div class="pcard reveal reveal-d3">
     <div class="phead">
       <div>
         <div class="pnum">// 04</div>
@@ -336,7 +415,8 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
     <div class="pbody">
       <div>
-        <p class="pdesc" style="margin-top:0.5rem">
+        <img src="ECS_study.png" alt="DX12 ECS VampireSurvivor screenshot" style="width:100%;display:block;margin-bottom:1rem;border:1px solid var(--border)">
+        <p class="pdesc">
           EnTT ECS・マルチスレッド・DirectX 12描画パフォーマンスを研究するための自主プロジェクト。Vampire Survivors形式のデモを通じて、データ指向アーキテクチャ・並列ジョブシステム・GPU側カリングを実装。
         </p>
       </div>
@@ -360,120 +440,125 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
-  <div style="color:var(--comment);font-size:12px;margin-top:0.5rem">}</div>
+  <div style="color:var(--comment);font-size:12px;margin-top:0.5rem" class="reveal">}</div>
 </section>
 
 <hr class="div">
 
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
 <section id="skills">
-  <div class="sec-comment">/* 03 — stack */</div>
-  <h2><span class="h-kw">const</span> <span class="h-fn">skills</span> <span style="color:var(--muted)">=</span> [</h2>
-  <div class="sgrid">
+  <div class="sec-comment reveal">/* 03 — stack */</div>
+  <h2 class="reveal"><span class="h-kw">const</span> <span class="h-fn">skills</span> <span style="color:var(--muted)">=</span> [</h2>
+  <div class="sgrid reveal">
     <div class="sgroup">
       <div class="stitle">Languages</div>
-      <div class="sitem hi">C++</div>
-      <div class="sitem hi">HLSL</div>
-      <div class="sitem md">C</div>
+      <div class="sitem hi">C++<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">HLSL<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem md">C<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Graphics API</div>
-      <div class="sitem hi">DirectX 12</div>
-      <div class="sitem hi">DirectX 11</div>
-      <div class="sitem hi">Compute Shader</div>
+      <div class="sitem hi">DirectX 12<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">DirectX 11<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">Compute Shader<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Game Engine</div>
-      <div class="sitem md">Unreal Engine（2年）</div>
-      <div class="sitem md">Blueprint / C++ 拡張</div>
+      <div class="sitem md">Unreal Engine（2年）<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem md">Blueprint / C++ 拡張<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Rendering</div>
-      <div class="sitem hi">FFT Ocean Simulation</div>
-      <div class="sitem hi">GPU Skinning</div>
-      <div class="sitem hi">Procedural Texturing</div>
-      <div class="sitem md">PBR Shading</div>
-      <div class="sitem">Shadow Mapping</div>
+      <div class="sitem hi">FFT Ocean Simulation<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">GPU Skinning<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">Procedural Texturing<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem md">PBR Shading<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem">Shadow Mapping<span class="prof"><i class="on"></i><i></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Engine / Systems</div>
-      <div class="sitem hi">Custom Engine (DX11)</div>
-      <div class="sitem hi">ECS Architecture</div>
-      <div class="sitem hi">Async Asset Loading</div>
-      <div class="sitem md">XAudio2</div>
-      <div class="sitem">WinSock TCP/UDP</div>
+      <div class="sitem hi">Custom Engine (DX11)<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">ECS Architecture<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">Async Asset Loading<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem md">XAudio2<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem">WinSock TCP/UDP<span class="prof"><i class="on"></i><i></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Tools</div>
-      <div class="sitem hi">Git / GitHub</div>
-      <div class="sitem hi">Visual Studio</div>
-      <div class="sitem md">RenderDoc</div>
-      <div class="sitem md">PIX for Windows</div>
+      <div class="sitem hi">Git / GitHub<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem hi">Visual Studio<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem md">RenderDoc<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem md">PIX for Windows<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Languages（言語）</div>
-      <div class="sitem fn">中国語（母国語）</div>
-      <div class="sitem fn">日本語（業務レベル）</div>
-      <div class="sitem">英語（読解・日常会話）</div>
+      <div class="sitem fn">中国語（母国語）<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem fn">日本語（業務レベル）<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem">英語（読解・日常会話）<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">// Always Learning</div>
+      <div class="sitem">Vulkan</div>
+      <div class="sitem">DXR Ray Tracing</div>
+      <div class="sitem">Mesh Shaders</div>
+      <div class="sitem">Physically Based Sim</div>
+      <div class="sitem" style="color:var(--comment);font-style:italic">more...</div>
     </div>
   </div>
-  <div style="color:var(--comment);font-size:12px;margin-top:1rem">];</div>
+  <div style="color:var(--comment);font-size:12px;margin-top:1rem" class="reveal">];</div>
 </section>
 
 <hr class="div">
 
-<hr class="div">
-
+<!-- ═══════════════════ CAREER ═══════════════════ -->
 <section id="career">
-  <div class="sec-comment">/* 05 — work history */</div>
-  <h2><span class="h-kw">const</span> <span class="h-fn">career</span> <span style="color:var(--muted)">=</span> [</h2>
-  <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)">
+  <div class="sec-comment reveal">/* 04 — education &amp; career */</div>
+  <h2 class="reveal"><span class="h-kw">const</span> <span class="h-fn">career</span> <span style="color:var(--muted)">=</span> [</h2>
 
-    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
-      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
-        2013.09 — 2016.12
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">山西省中級人民法院 刑事庁第二庁</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">書記官</div>
-        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">法廷審理における調書作成、裁判文書の発行・確認業務。高い正確性と責任感が求められる環境での実務経験。</div>
-      </div>
+  <div class="timeline reveal">
+
+    <div class="tentry edu current">
+      <div class="tdate">2023.04 — 在学中 <span class="ttype edu">学歴</span></div>
+      <div class="ttitle">HAL東京</div>
+      <div class="trole">ゲーム制作4年制ゲーム学科</div>
+      <div class="tdesc">C++ / DirectX 11・12を中心にグラフィックスプログラミングを専攻。FFT海洋シミュレーション・自作エンジン・ECSアーキテクチャなど、授業外でも独自に研究・実装を継続。2027年3月卒業予定。</div>
     </div>
 
-    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
-      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
-        2017.02 — 2022.01
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">榆次晨虹油漆商店</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">マネージャー</div>
-        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">接客・顧客関係維持・発注管理・人事・シフト管理など店舗運営全般を統括。限られたリソースの中で優先順位を判断し業務を遂行。</div>
-      </div>
+    <div class="tentry current">
+      <div class="tdate">2023.05 — 在職中 <span class="ttype">職歴</span></div>
+      <div class="ttitle">マルエツ 菊川店</div>
+      <div class="trole">アルバイト（4年次）</div>
+      <div class="tdesc">日本企業のビジネスマナー・報連相・上下関係を実践で習得。継続勤務の実績から店長よりリーダー就任を打診される。</div>
     </div>
 
-    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
-      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
-        2023.05 — 在職中
-      </div>
-      <div>
-        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">マルエツ 菊川店</div>
-        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">アルバイト（4年次）</div>
-        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">日本企業のビジネスマナー・報連相・上下関係を実践で習得。継続勤務の実績から店長よりリーダー就任を打診される。</div>
-      </div>
+    <div class="tentry">
+      <div class="tdate">2017.02 — 2022.01 <span class="ttype">職歴</span></div>
+      <div class="ttitle">榆次晨虹油漆商店</div>
+      <div class="trole">マネージャー</div>
+      <div class="tdesc">接客・顧客関係維持・発注管理・人事・シフト管理など店舗運営全般を統括。限られたリソースの中で優先順位を判断し業務を遂行。</div>
+    </div>
+
+    <div class="tentry">
+      <div class="tdate">2013.09 — 2016.12 <span class="ttype">職歴</span></div>
+      <div class="ttitle">山西省中級人民法院 刑事庁第二庁</div>
+      <div class="trole">書記官</div>
+      <div class="tdesc">法廷審理における調書作成、裁判文書の発行・確認業務。高い正確性と責任感が求められる環境での実務経験。</div>
     </div>
 
   </div>
-  <div style="color:var(--comment);font-size:12px;margin-top:1rem">];</div>
+  <div style="color:var(--comment);font-size:12px;margin-top:1.5rem" class="reveal">];</div>
 </section>
 
 <hr class="div">
 
+<!-- ═══════════════════ ABOUT ═══════════════════ -->
 <section id="about">
-  <div class="sec-comment">/* 06 — profile &amp; self PR */</div>
-  <h2><span class="h-kw">type</span> <span class="h-fn">About</span> <span style="color:var(--muted)">=</span> {</h2>
-  <div class="agrid">
+  <div class="sec-comment reveal">/* 05 — profile &amp; self PR */</div>
+  <h2 class="reveal"><span class="h-kw">type</span> <span class="h-fn">About</span> <span style="color:var(--muted)">=</span> {</h2>
+  <div class="agrid reveal">
     <div class="atext">
       <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において法廷審理における調書作成や裁判文書の発行確認など、正確性と責任感が強く求められる業務に従事しました。その後、小規模企業にて総務・一般事務を中心に幅広い業務を担当し、限られたリソースの中で優先順位を判断しながら業務を遂行する力を身につけました。</p>
-      <p>来日後は同じ職場で4年間継続して勤務しており、日本企業特有のビジネスマナーや報連相の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長よりリーダーへの就任を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。また、学生時代には地域の高齢者を対象とした法律知識の普及活動にも参加し、専門知識をわかりやすく噛み砕いて伝える力と、初対面の方とも信頼関係を築くコミュニケーション能力を培いました。</p>
+      <p>来日後は同じ職場で4年間継続して勤務しており、日本企業特有のビジネスマナーや報連相の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長よりリーダーへの就任を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。</p>
       <p>技術面においては、専門学校でC++を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、複雑なシステムをゼロから実装しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした自己学習と問題解決の姿勢が、新しい技術スタックへの適応力の根拠になっていると考えています。</p>
       <p>これまでの社会人経験で培った責任感・コミュニケーション能力・環境への適応力と、自ら学び続ける姿勢を活かし、入社後は業務に必要な技術を積極的に習得しながら、チームの一員として早期に貢献できるエンジニアとして成長していきたいと考えています。</p>
       <p class="avail">// 2027年4月より就業可能</p>
@@ -485,15 +570,16 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <div class="stat"><div class="stat-n">3</div><div class="stat-l">Languages</div></div>
     </div>
   </div>
-  <div style="color:var(--comment);font-size:12px;margin-top:2rem">};</div>
+  <div style="color:var(--comment);font-size:12px;margin-top:2rem" class="reveal">};</div>
 </section>
 
 <hr class="div">
 
+<!-- ═══════════════════ CONTACT ═══════════════════ -->
 <section id="contact">
-  <div class="sec-comment">/* 07 — contact */</div>
-  <h2><span class="h-fn">contact</span><span style="color:var(--muted)">()</span> {</h2>
-  <div class="cinner">
+  <div class="sec-comment reveal">/* 06 — contact */</div>
+  <h2 class="reveal"><span class="h-fn">contact</span><span style="color:var(--muted)">()</span> {</h2>
+  <div class="cinner reveal">
     <p class="atext" style="max-width:400px">グラフィックスエンジニア・エンジンプログラマーのポジションを探しています。お気軽にご連絡ください。</p>
     <div class="clinks">
       <a href="mailto:chengyuxin0127@gmail.com" class="clnk">
@@ -506,13 +592,51 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       </a>
     </div>
   </div>
-  <div style="color:var(--comment);font-size:12px;margin-top:2rem">}</div>
+  <div style="color:var(--comment);font-size:12px;margin-top:2rem" class="reveal">}</div>
 </section>
 
 <footer>
-  <span class="fcopy">// © 2027 — Graphics &amp; Engine Programmer</span>
+  <span class="fcopy">// © 2027 — C++ Engine &amp; Systems Programmer</span>
   <span class="fcopy">Built with HTML · GitHub Pages</span>
+  <a href="#hero" class="back-top">↑ top</a>
 </footer>
+
+<script>
+// ── Scroll reveal (Intersection Observer) ──
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+revealEls.forEach(el => revealObs.observe(el));
+
+// ── Nav active state ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav a.lnk[data-section]');
+const sectionObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`nav a.lnk[data-section="${e.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+sections.forEach(s => sectionObs.observe(s));
+
+// ── Hamburger menu ──
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileNav.classList.toggle('open');
+});
+document.querySelectorAll('.mobile-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileNav.classList.remove('open');
+  });
+});
+</script>
 
 </body>
 </html>
