@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Graphics & Engine Programmer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:       #0e0e12;
+  --bg2:      #13131a;
+  --bg3:      #1a1a24;
+  --border:   #22222e;
+  --border2:  #2e2e3e;
+  --text:     #b8c8e8;
+  --muted:    #cdd0d4;
+  --dim:      #2e3a50;
+  --kw:       #9b8fd8;
+  --str:      #7ab8a0;
+  --fn:       #c8a46e;
+  --comment:  #7a8a9a;
+  --num:      #d4875a;
+  --type:     #6a9fd8;
+  --mono:     'IBM Plex Mono', monospace;
+  --sans:     'IBM Plex Sans', sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--mono);font-size:14px;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:48px;background:rgba(14,14,18,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 2rem;z-index:100;gap:2rem}
+.nav-logo{font-weight:600;font-size:13px;color:var(--str);text-decoration:none;margin-right:auto;letter-spacing:0.04em}
+.nav-logo span{color:var(--muted)}
+nav a.lnk{color:var(--muted);text-decoration:none;font-size:12px;letter-spacing:0.04em;transition:color 0.2s}
+nav a.lnk:hover{color:var(--text)}
+nav a.lnk::before{content:'// ';color:var(--comment)}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 2rem 4rem;max-width:860px;margin:0 auto}
+.hero-comment{font-size:12px;color:var(--comment);margin-bottom:1.5rem;letter-spacing:0.04em}
+.hero-block{margin-bottom:2rem}
+.hl{display:block;line-height:1.25}
+.hl-kw{color:var(--kw);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
+.hl-fn{color:var(--fn);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
+.hl-str{color:var(--str);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
+.hl-type{color:var(--type);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
+.hl-punct{color:var(--muted);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:400}
+.hero-desc{font-size:13px;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:2rem;font-family:var(--sans);font-weight:300}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
+.htag{font-size:11px;padding:3px 10px;border:1px solid var(--border2);color:var(--muted);letter-spacing:0.05em}
+.htag.kw{border-color:var(--kw);color:var(--kw);background:rgba(155,143,216,0.06)}
+.htag.st{border-color:var(--str);color:var(--str);background:rgba(122,184,160,0.06)}
+.htag.fn{border-color:var(--fn);color:var(--fn);background:rgba(200,164,110,0.06)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:12px;padding:9px 22px;text-decoration:none;transition:all 0.2s;letter-spacing:0.04em;cursor:pointer;border:none}
+.btn-p{background:var(--str);color:#0e0e12;font-weight:600}
+.btn-p:hover{background:transparent;color:var(--str);outline:1px solid var(--str)}
+.btn-g{background:transparent;color:var(--muted);outline:1px solid var(--border2)}
+.btn-g:hover{outline-color:var(--muted);color:var(--text)}
+
+/* SECTIONS */
+section{max-width:860px;margin:0 auto;padding:5rem 2rem}
+.sec-comment{font-size:11px;color:var(--comment);letter-spacing:0.08em;margin-bottom:0.5rem}
+h2{font-family:var(--mono);font-size:clamp(1.2rem,3vw,1.8rem);font-weight:600;color:var(--text);margin-bottom:2.5rem;letter-spacing:-0.01em}
+h2 .h-kw{color:var(--kw)}
+h2 .h-fn{color:var(--fn)}
+hr.div{border:none;border-top:1px solid var(--border);margin:0}
+
+/* PROJECT CARDS */
+.pcard{border:1px solid var(--border);background:var(--bg2);margin-bottom:1.5rem;transition:border-color 0.2s}
+.pcard:hover{border-color:var(--border2)}
+.phead{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.pnum{font-size:11px;color:var(--comment);margin-bottom:3px;letter-spacing:0.06em}
+.ptitle{font-size:1.1rem;font-weight:600;color:var(--fn);margin-bottom:2px}
+.psub{font-size:11px;color:var(--muted);letter-spacing:0.04em}
+.plinks{display:flex;gap:8px;flex-shrink:0}
+.plnk{font-size:11px;color:var(--muted);text-decoration:none;padding:5px 12px;border:1px solid var(--border);letter-spacing:0.04em;transition:all 0.2s;white-space:nowrap}
+.plnk:hover{color:var(--str);border-color:var(--str)}
+.pbody{padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.pdesc{font-size:12px;color:var(--muted);line-height:1.85;font-family:var(--sans);font-weight:300}
+.flist{list-style:none}
+.flist li{font-size:12px;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;font-family:var(--sans);font-weight:300}
+.flist li:last-child{border-bottom:none}
+.flist li::before{content:'▸';color:var(--str);flex-shrink:0;margin-top:2px;font-family:var(--mono)}
+.ptags{padding:0.85rem 1.5rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:10px;letter-spacing:0.07em;padding:2px 8px;border:1px solid var(--border)}
+.tag.kw{border-color:rgba(155,143,216,0.3);color:var(--kw)}
+.tag.st{border-color:rgba(122,184,160,0.3);color:var(--str)}
+.tag.fn{border-color:rgba(200,164,110,0.3);color:var(--fn)}
+.tag.tp{border-color:rgba(106,159,216,0.3);color:var(--type)}
+
+/* VIDEO PLACEHOLDER */
+.vph{background:var(--bg3);border:1px dashed var(--border2);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--comment);font-size:11px;margin-bottom:1rem;letter-spacing:0.05em}
+.vph svg{width:28px;height:28px;stroke:var(--muted);fill:none;stroke-width:1.5;opacity:0.5}
+
+/* SKILLS */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+.sgroup{background:var(--bg2);padding:1.1rem 1.25rem}
+.stitle{font-size:10px;color:var(--comment);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.7rem}
+.sitem{font-size:12px;color:var(--muted);padding:2px 0;display:flex;align-items:center;gap:6px;font-family:var(--sans);font-weight:300}
+.sitem::before{content:'';width:4px;height:4px;background:var(--border2);flex-shrink:0}
+.sitem.hi{color:var(--str)}.sitem.hi::before{background:var(--str)}
+.sitem.md{color:var(--kw)}.sitem.md::before{background:var(--kw)}
+.sitem.fn{color:var(--fn)}.sitem.fn::before{background:var(--fn)}
+
+/* ABOUT */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.atext{font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans);font-weight:300}
+.atext p+p{margin-top:1rem}
+.atext .avail{font-family:var(--mono);font-size:11px;color:var(--str);margin-top:1.5rem;letter-spacing:0.05em}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.stat{background:var(--bg2);padding:1.25rem;text-align:center}
+.stat-n{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--fn);line-height:1;margin-bottom:4px}
+.stat-l{font-size:10px;color:var(--comment);letter-spacing:0.1em;text-transform:uppercase}
+
+/* CONTACT */
+.cinner{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
+.clinks{display:flex;flex-direction:column;gap:12px}
+.clnk{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.2s;font-family:var(--sans)}
+.clnk:hover{color:var(--str)}
+.clnk svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.5;flex-shrink:0}
+
+footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.fcopy{font-size:11px;color:var(--comment);letter-spacing:0.04em}
+
+@media(max-width:640px){
+  .pbody,.agrid{grid-template-columns:1fr}
+  nav a.lnk{display:none}
+  .nav-logo{margin-right:0}
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fu{opacity:0;animation:fadeUp 0.55s ease forwards}
+.fu:nth-child(1){animation-delay:0.05s}
+.fu:nth-child(2){animation-delay:0.15s}
+.fu:nth-child(3){animation-delay:0.25s}
+.fu:nth-child(4){animation-delay:0.35s}
+.fu:nth-child(5){animation-delay:0.45s}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo"><span>~/</span>portfolio</a>
+  <a href="#projects" class="lnk">projects</a>
+  <a href="#skills" class="lnk">skills</a>
+  <a href="#career" class="lnk">career</a>
+  <a href="#about" class="lnk">about</a>
+  <a href="#contact" class="lnk">contact</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-comment fu">// Graphics &amp; Engine Programmer</div>
+  <div class="hero-block">
+    <span class="hl fu"><span class="hl-kw">const</span> <span class="hl-type">engineer</span> <span class="hl-punct">= {</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: </span><span class="hl-str">"C++"</span><span class="hl-punct">,</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">api</span><span class="hl-punct">: [</span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 11"</span><span class="hl-punct">, </span><span class="hl-str">"Unreal Engine"</span><span class="hl-punct">],</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">research</span><span class="hl-punct">: </span><span class="hl-str">"FFT ocean simulation"</span></span>
+    <span class="hl fu"><span class="hl-punct">};</span></span>
+  </div>
+  <p class="hero-desc fu">
+    C++を主軸に、DirectX 12 / 11・Unreal Engineでグラフィックスプログラミングとエンジン開発を研究。FFTベースのリアルタイム海洋シミュレーション・自作3Dエンジン・Unrealでのゲーム制作まで、低レイヤーから応用まで一貫して実装してきました。
+  </p>
+  <div class="hero-tags fu">
+    <span class="htag fn">C++</span>
+    <span class="htag st">DirectX 12</span>
+    <span class="htag st">DirectX 11</span>
+    <span class="htag st">HLSL</span>
+    <span class="htag kw">Unreal Engine</span>
+    <span class="htag kw">FFT Ocean</span>
+    <span class="htag kw">Custom Engine</span>
+    <span class="htag">GPU Skinning</span>
+    <span class="htag">ECS</span>
+  </div>
+  <div class="cta-row fu">
+    <a href="#projects" class="btn btn-p">view projects()</a>
+    <a href="https://github.com/bourbon-love" target="_blank" class="btn btn-g">github ↗</a>
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="projects">
+  <div class="sec-comment">/* 02 — work */</div>
+  <h2><span class="h-kw">function</span> <span class="h-fn">projects</span>() {</h2>
+
+  <!-- PROJECT 01 -->
+  <div class="pcard">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 01 — featured</div>
+        <div class="ptitle">D3D12HelloOcean</div>
+        <div class="psub">DirectX 12 · JONSWAP FFT Ocean · Full Post-Processing Pipeline · PBR Ship</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/D3D12HelloOcean" target="_blank" class="plnk">GitHub ↗</a>
+        <a href="https://youtu.be/7AlJAtE4OF4" target="_blank" class="plnk">Demo ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <div class="vph">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          // demo video — youtu.be/7AlJAtE4OF4
+        </div>
+        <p class="pdesc">
+          DirectX 12とC++20で構築したリアルタイム海洋レンダラー。JONSWAPスペクトルベースのGPU FFTによる無限海面シミュレーション、体積雲レイマーチング、フルポストプロセスパイプラインを実装。GLTFランタイムローダーによるPBR船体（Cook-Torrance GGX）とバネ-ダンパー浮力物理も含む。
+        </p>
+      </div>
+      <ul class="flist">
+        <li>JONSWAP Spectrum + Radix-2 IFFT（GPU 3パスCS）</li>
+        <li>無限タイル海面 9×9 / 400m、2レベルLOD、視錐台カリング</li>
+        <li>FFT変位 + 4 Gerstner波ハイブリッド</li>
+        <li>体積雲レイマーチング（半解像度 8×高速化、グラジェントノイズ）</li>
+        <li>雲影：海面へのレイマーチ太陽方向シャドウ</li>
+        <li>水面：Beer-Lambert吸収・Snell窓・SSS・Fresnel・SSR</li>
+        <li>TAA · Bloom · God Rays · DOF · SSAO · ACES トーンマッピング</li>
+        <li>GLTFランタイムローダー + PBR船体（ARM テクスチャ対応）</li>
+        <li>バネ-ダンパー船体傾斜物理（GPU FFT高さ読み戻し、1フレーム遅延）</li>
+        <li>天候システム (Calm/Windy/Storm/Tsunami) スムーズ補間</li>
+        <li>Boidsフロッキング魚群 + GPU インスタンシング</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag st">DirectX 12</span>
+      <span class="tag st">HLSL</span>
+      <span class="tag st">Compute Shader</span>
+      <span class="tag kw">FFT / JONSWAP</span>
+      <span class="tag kw">Volumetric Clouds</span>
+      <span class="tag kw">PBR / Cook-Torrance</span>
+      <span class="tag fn">C++20</span>
+      <span class="tag tp">Post-Processing</span>
+      <span class="tag tp">GLTF Loader</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 02 -->
+  <div class="pcard">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 02</div>
+        <div class="ptitle">3D Action RPG — Custom DX11 Engine</div>
+        <div class="psub">DirectX 11 · Skeletal Animation · Boss AI · Quadrant Arena System</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/3D_ActionRPG" target="_blank" class="plnk">GitHub ↗</a>
+        <a href="https://youtu.be/9BKswS41NkY" target="_blank" class="plnk">Demo ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <div class="vph">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          // demo video — youtu.be/9BKswS41NkY
+        </div>
+        <p class="pdesc">
+          C++とDirectX 11で自作したハック＆スラッシュRPG。4エリア構成のアリーナ進行に、エネルギー管理付き飛剣コンボシステム、3フェーズボス戦、Assimpスケルタルアニメーションブレンドコントローラーを実装。
+        </p>
+      </div>
+      <ul class="flist">
+        <li>飛剣コンボ：Thrust / Uppercut / Sweep / Circle Sweep</li>
+        <li>万剣斉発アルティメット（50エネルギー消費）</li>
+        <li>パリィシステム + ボスディフェンスブレイク</li>
+        <li>3フェーズボスAI（IDLE/PATROL/CHASE/COMBAT状態機械）</li>
+        <li>Assimpスケルタルアニメーション + ブレンドコントローラー</li>
+        <li>2パスレンダリング + 5描画レイヤー構成</li>
+        <li>Sphere / Box / Arc コライダーマネージャー</li>
+        <li>XAudio2 ボス戦専用BGM切替システム</li>
+        <li>五行エレメント切替 + インベントリシステム</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag st">DirectX 11</span>
+      <span class="tag st">HLSL</span>
+      <span class="tag fn">C++20</span>
+      <span class="tag kw">Skeletal Animation</span>
+      <span class="tag kw">Boss AI FSM</span>
+      <span class="tag tp">Assimp</span>
+      <span class="tag tp">XAudio2</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 03 -->
+  <div class="pcard">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 03</div>
+        <div class="ptitle">3D Mine Game</div>
+        <div class="psub">DirectX 11 · Tactical · Multiplayer · Map Editor</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/3DMINEGAME" target="_blank" class="plnk">GitHub ↗</a>
+        <a href="https://youtu.be/4HiV34tTbH0" target="_blank" class="plnk">Demo ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <div class="vph">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          // demo video — youtu.be/4HiV34tTbH0
+        </div>
+        <p class="pdesc">
+          マインスイーパーコンセプトから発展させた3Dタクティカルゲーム。シングルプレイ（15×15）・最大4人マルチプレイバトル（30×30）・インゲームマップエディターを実装。手書きHLSLシェーダーとレンダーテクスチャ2パスパイプライン。
+        </p>
+      </div>
+      <ul class="flist">
+        <li>タイルベース地形：氷（滑走）・砂（減速）・草（HP回復）・水（ダメージ）</li>
+        <li>4人ターン制マルチプレイ + 移動ポイントシステム</li>
+        <li>インゲームマップエディター（リアルタイム地形切替・保存）</li>
+        <li>4キャラクター手続き生成（外部モデルファイル不要）</li>
+        <li>手書きHLSL + レンダーテクスチャ2パスパイプライン</li>
+        <li>DirectInput 8 キーボード + DirectX Mouseマウス入力</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag st">DirectX 11</span>
+      <span class="tag st">HLSL</span>
+      <span class="tag fn">C++</span>
+      <span class="tag kw">Multiplayer</span>
+      <span class="tag kw">Map Editor</span>
+      <span class="tag tp">Procedural Geometry</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 04 -->
+  <div class="pcard">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 04</div>
+        <div class="ptitle">DX12 ECS — Vampire Survivors Demo</div>
+        <div class="psub">DirectX 12 · EnTT ECS · Thread Pool · GPU Frustum Culling</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/DX12-ECS-VampireSurvivor" target="_blank" class="plnk">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <p class="pdesc" style="margin-top:0.5rem">
+          EnTT ECS・マルチスレッド・DirectX 12描画パフォーマンスを研究するための自主プロジェクト。Vampire Survivors形式のデモを通じて、データ指向アーキテクチャ・並列ジョブシステム・GPU側カリングを実装。
+        </p>
+      </div>
+      <ul class="flist">
+        <li>EnTT ECS：キャッシュフレンドリーなコンポーネントレイアウト</li>
+        <li>スレッドプール：128エンティティ単位で敵AIを並列ディスパッチ</li>
+        <li>GPUフラスタムカリング：CSで全インスタンスを判定 + InterlockedAdd</li>
+        <li>ExecuteIndirect：CPUリードバックなしでGPUが描画引数を生成</li>
+        <li>単一DrawIndexedInstanced呼び出しで全エンティティを描画</li>
+        <li>ImGui：FPS・エンティティ数・スレッド数・GPUカリング切替</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag st">DirectX 12</span>
+      <span class="tag st">HLSL</span>
+      <span class="tag fn">C++20</span>
+      <span class="tag kw">EnTT ECS</span>
+      <span class="tag kw">GPU Culling</span>
+      <span class="tag kw">ExecuteIndirect</span>
+      <span class="tag tp">Multi-threading</span>
+    </div>
+  </div>
+
+  <div style="color:var(--comment);font-size:12px;margin-top:0.5rem">}</div>
+</section>
+
+<hr class="div">
+
+<section id="skills">
+  <div class="sec-comment">/* 03 — stack */</div>
+  <h2><span class="h-kw">const</span> <span class="h-fn">skills</span> <span style="color:var(--muted)">=</span> [</h2>
+  <div class="sgrid">
+    <div class="sgroup">
+      <div class="stitle">Languages</div>
+      <div class="sitem hi">C++</div>
+      <div class="sitem hi">HLSL</div>
+      <div class="sitem md">C</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Graphics API</div>
+      <div class="sitem hi">DirectX 12</div>
+      <div class="sitem hi">DirectX 11</div>
+      <div class="sitem hi">Compute Shader</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Game Engine</div>
+      <div class="sitem md">Unreal Engine（2年）</div>
+      <div class="sitem md">Blueprint / C++ 拡張</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Rendering</div>
+      <div class="sitem hi">FFT Ocean Simulation</div>
+      <div class="sitem hi">GPU Skinning</div>
+      <div class="sitem hi">Procedural Texturing</div>
+      <div class="sitem md">PBR Shading</div>
+      <div class="sitem">Shadow Mapping</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Engine / Systems</div>
+      <div class="sitem hi">Custom Engine (DX11)</div>
+      <div class="sitem hi">ECS Architecture</div>
+      <div class="sitem hi">Async Asset Loading</div>
+      <div class="sitem md">XAudio2</div>
+      <div class="sitem">WinSock TCP/UDP</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Tools</div>
+      <div class="sitem hi">Git / GitHub</div>
+      <div class="sitem hi">Visual Studio</div>
+      <div class="sitem md">RenderDoc</div>
+      <div class="sitem md">PIX for Windows</div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Languages（言語）</div>
+      <div class="sitem fn">中国語（母国語）</div>
+      <div class="sitem fn">日本語（業務レベル）</div>
+      <div class="sitem">英語（読解・日常会話）</div>
+    </div>
+  </div>
+  <div style="color:var(--comment);font-size:12px;margin-top:1rem">];</div>
+</section>
+
+<hr class="div">
+
+<hr class="div">
+
+<section id="career">
+  <div class="sec-comment">/* 05 — work history */</div>
+  <h2><span class="h-kw">const</span> <span class="h-fn">career</span> <span style="color:var(--muted)">=</span> [</h2>
+  <div style="display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border)">
+
+    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
+        2013.09 — 2016.12
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">山西省中級人民法院 刑事庁第二庁</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">書記官</div>
+        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">法廷審理における調書作成、裁判文書の発行・確認業務。高い正確性と責任感が求められる環境での実務経験。</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
+        2017.02 — 2022.01
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">榆次晨虹油漆商店</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">マネージャー</div>
+        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">接客・顧客関係維持・発注管理・人事・シフト管理など店舗運営全般を統括。限られたリソースの中で優先順位を判断し業務を遂行。</div>
+      </div>
+    </div>
+
+    <div style="background:var(--bg2);padding:1.1rem 1.5rem;display:grid;grid-template-columns:160px 1fr;gap:1rem;align-items:start">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--comment);letter-spacing:0.04em;padding-top:2px">
+        2023.05 — 在職中
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:600;color:var(--fn);margin-bottom:2px">マルエツ 菊川店</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:0.03em">アルバイト（4年次）</div>
+        <div style="font-size:12px;color:var(--muted);font-family:var(--sans);font-weight:300;line-height:1.7">日本企業のビジネスマナー・報連相・上下関係を実践で習得。継続勤務の実績から店長よりリーダー就任を打診される。</div>
+      </div>
+    </div>
+
+  </div>
+  <div style="color:var(--comment);font-size:12px;margin-top:1rem">];</div>
+</section>
+
+<hr class="div">
+
+<section id="about">
+  <div class="sec-comment">/* 06 — profile &amp; self PR */</div>
+  <h2><span class="h-kw">type</span> <span class="h-fn">About</span> <span style="color:var(--muted)">=</span> {</h2>
+  <div class="agrid">
+    <div class="atext">
+      <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において法廷審理における調書作成や裁判文書の発行確認など、正確性と責任感が強く求められる業務に従事しました。その後、小規模企業にて総務・一般事務を中心に幅広い業務を担当し、限られたリソースの中で優先順位を判断しながら業務を遂行する力を身につけました。</p>
+      <p>来日後は同じ職場で4年間継続して勤務しており、日本企業特有のビジネスマナーや報連相の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長よりリーダーへの就任を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。また、学生時代には地域の高齢者を対象とした法律知識の普及活動にも参加し、専門知識をわかりやすく噛み砕いて伝える力と、初対面の方とも信頼関係を築くコミュニケーション能力を培いました。</p>
+      <p>技術面においては、専門学校でC++を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、複雑なシステムをゼロから実装しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした自己学習と問題解決の姿勢が、新しい技術スタックへの適応力の根拠になっていると考えています。</p>
+      <p>これまでの社会人経験で培った責任感・コミュニケーション能力・環境への適応力と、自ら学び続ける姿勢を活かし、入社後は業務に必要な技術を積極的に習得しながら、チームの一員として早期に貢献できるエンジニアとして成長していきたいと考えています。</p>
+      <p class="avail">// 2027年4月より就業可能</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">C++</div><div class="stat-l">Primary Language</div></div>
+      <div class="stat"><div class="stat-n">FFT</div><div class="stat-l">Research Focus</div></div>
+      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Projects</div></div>
+      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Languages</div></div>
+    </div>
+  </div>
+  <div style="color:var(--comment);font-size:12px;margin-top:2rem">};</div>
+</section>
+
+<hr class="div">
+
+<section id="contact">
+  <div class="sec-comment">/* 07 — contact */</div>
+  <h2><span class="h-fn">contact</span><span style="color:var(--muted)">()</span> {</h2>
+  <div class="cinner">
+    <p class="atext" style="max-width:400px">グラフィックスエンジニア・エンジンプログラマーのポジションを探しています。お気軽にご連絡ください。</p>
+    <div class="clinks">
+      <a href="mailto:chengyuxin0127@gmail.com" class="clnk">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        chengyuxin0127@gmail.com
+      </a>
+      <a href="https://github.com/bourbon-love" target="_blank" class="clnk">
+        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        github.com/bourbon-love
+      </a>
+    </div>
+  </div>
+  <div style="color:var(--comment);font-size:12px;margin-top:2rem">}</div>
+</section>
+
+<footer>
+  <span class="fcopy">// © 2027 — Graphics &amp; Engine Programmer</span>
+  <span class="fcopy">Built with HTML · GitHub Pages</span>
+</footer>
+
+</body>
+</html>
