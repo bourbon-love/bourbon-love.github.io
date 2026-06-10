@@ -151,9 +151,21 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 
 /* ── ABOUT ── */
 .agrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
-.atext{font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans);font-weight:300}
+.atext{font-size:15px;color:var(--muted);line-height:1.9;font-family:var(--sans);font-weight:300;max-width:680px}
 .atext p+p{margin-top:1rem}
 .atext .avail{font-family:var(--mono);font-size:11px;color:var(--str);margin-top:1.5rem;letter-spacing:0.05em}
+.atext .alabel{display:block;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;margin-bottom:0.5rem;margin-top:2rem}
+.atext .alabel:first-child{margin-top:0}
+.atext .alabel.c-st{color:var(--str)}
+.atext .alabel.c-kw{color:var(--kw)}
+.atext .alabel.c-fn{color:var(--fn)}
+.atext .alabel.c-tp{color:var(--type)}
+.atext .km{font-family:var(--mono);font-size:0.88em;letter-spacing:0.02em;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.atext .km.c-st{text-decoration-color:var(--str)}
+.atext .km.c-kw{text-decoration-color:var(--kw)}
+.atext .km.c-fn{text-decoration-color:var(--fn)}
+.atext .km.c-tp{text-decoration-color:var(--type)}
+.atext{border-left:2px solid var(--border2);padding-left:1.5rem}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
 .stat{background:var(--bg2);padding:1.25rem;text-align:center}
 .stat-n{font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--fn);line-height:1;margin-bottom:4px}
@@ -555,20 +567,16 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 <section id="about">
   <div class="sec-comment reveal">/* 05 — profile &amp; self PR */</div>
   <h2 class="reveal"><span class="h-kw">type</span> <span class="h-fn">About</span> <span style="color:var(--muted)">=</span> {</h2>
-  <div class="agrid reveal">
-    <div class="atext">
-      <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において法廷審理における調書作成や裁判文書の発行確認など、正確性と責任感が強く求められる業務に従事しました。その後、小規模企業にて総務・一般事務を中心に幅広い業務を担当し、限られたリソースの中で優先順位を判断しながら業務を遂行する力を身につけました。</p>
-      <p>来日後は同じ職場で4年間継続して勤務しており、日本企業特有のビジネスマナーや報連相の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長よりリーダーへの就任を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。</p>
-      <p>技術面においては、専門学校でC++を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、複雑なシステムをゼロから実装しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした自己学習と問題解決の姿勢が、新しい技術スタックへの適応力の根拠になっていると考えています。</p>
-      <p>これまでの社会人経験で培った責任感・コミュニケーション能力・環境への適応力と、自ら学び続ける姿勢を活かし、入社後は業務に必要な技術を積極的に習得しながら、チームの一員として早期に貢献できるエンジニアとして成長していきたいと考えています。</p>
-      <p class="avail">// 2027年4月より就業可能</p>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-n">C++</div><div class="stat-l">Primary Language</div></div>
-      <div class="stat"><div class="stat-n">FFT</div><div class="stat-l">Research Focus</div></div>
-      <div class="stat"><div class="stat-n">4</div><div class="stat-l">Projects</div></div>
-      <div class="stat"><div class="stat-n">3</div><div class="stat-l">Languages</div></div>
-    </div>
+  <div class="atext reveal">
+    <span class="alabel c-st">// 職務経験</span>
+    <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において<span class="km c-st">法廷審理における調書作成・裁判文書の発行確認</span>など、正確性と責任感が強く求められる業務に従事しました。その後、小規模企業にて総務・一般事務を中心に幅広い業務を担当し、<span class="km c-st">限られたリソースの中で優先順位を判断</span>しながら業務を遂行する力を身につけました。</p>
+    <span class="alabel c-kw">// 来日後</span>
+    <p>来日後は同じ職場で<span class="km c-kw">4年間継続して勤務</span>しており、日本企業特有の<span class="km c-kw">ビジネスマナー・報連相</span>の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長より<span class="km c-kw">リーダーへの就任</span>を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。</p>
+    <span class="alabel c-fn">// 技術姿勢</span>
+    <p>技術面においては、専門学校で<span class="km c-fn">C++</span>を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、<span class="km c-fn">複雑なシステムをゼロから実装</span>しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした<span class="km c-fn">自己学習と問題解決の姿勢</span>が、新しい技術スタックへの適応力の根拠になっていると考えています。</p>
+    <span class="alabel c-tp">// 今後の展望</span>
+    <p>これまでの社会人経験で培った<span class="km c-tp">責任感・コミュニケーション能力・環境への適応力</span>と、自ら学び続ける姿勢を活かし、入社後は業務に必要な技術を積極的に習得しながら、<span class="km c-tp">チームの一員として早期に貢献</span>できるエンジニアとして成長していきたいと考えています。</p>
+    <p class="avail">// 2027年4月より就業可能</p>
   </div>
   <div style="color:var(--comment);font-size:12px;margin-top:2rem" class="reveal">};</div>
 </section>
