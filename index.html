@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — C++ Graphics & Java Backend Engineer</title>
+<title>Portfolio — Java Backend & C++ Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -56,6 +56,8 @@ nav a.lnk.active::before{color:var(--str)}
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:96px 2rem 4rem;max-width:860px;margin:0 auto}
 .hero-comment{font-size:12px;color:var(--comment);margin-bottom:1.5rem;letter-spacing:0.04em}
 .hero-block{margin-bottom:2rem}
+.hero-name{font-family:var(--sans);font-size:15px;color:var(--text);margin-bottom:1.25rem;letter-spacing:0.04em}
+.hero-name span{color:var(--comment);font-size:12px;margin-left:0.75rem}
 .hl{display:block;line-height:1.25}
 .hl-kw{color:var(--kw);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
 .hl-fn{color:var(--fn);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
@@ -86,7 +88,6 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 /* ── PROJECT CARDS ── */
 .pcard{border:1px solid var(--border);background:var(--bg2);margin-bottom:1.5rem;transition:border-color 0.2s}
 .pcard:hover{border-color:var(--border2)}
-.pcard.featured{border-left:2px solid var(--str)}
 .phead{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
 .pnum{font-size:11px;color:var(--comment);margin-bottom:3px;letter-spacing:0.06em}
 .ptitle{font-size:1.1rem;font-weight:600;color:var(--fn);margin-bottom:2px}
@@ -94,7 +95,6 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .plinks{display:flex;gap:8px;flex-shrink:0;align-items:center}
 .plnk{font-size:11px;color:var(--muted);text-decoration:none;padding:5px 12px;border:1px solid var(--border);letter-spacing:0.04em;transition:all 0.2s;white-space:nowrap}
 .plnk:hover{color:var(--str);border-color:var(--str)}
-.featured-badge{font-size:9px;letter-spacing:0.1em;padding:2px 8px;background:rgba(122,184,160,0.12);color:var(--str);border:1px solid rgba(122,184,160,0.3);text-transform:uppercase}
 .pbody{padding:1.25rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
 .pdesc{font-size:12px;color:var(--muted);line-height:1.85;font-family:var(--sans);font-weight:300}
 .flist{list-style:none}
@@ -108,6 +108,10 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .tag.fn{border-color:rgba(200,164,110,0.3);color:var(--fn)}
 .tag.tp{border-color:rgba(106,159,216,0.3);color:var(--type)}
 .pbody>*{min-width:0}
+.others{border:1px solid var(--border);background:var(--bg2);padding:1rem 1.5rem 0.5rem;margin-bottom:1.5rem}
+.orow{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:0.7rem 0;border-top:1px solid var(--border)}
+.otitle{font-size:13px;font-weight:600;color:var(--fn)}
+.osub{font-size:11px;color:var(--muted);font-family:var(--sans);font-weight:300}
 .pshot{display:block;margin-bottom:0.75rem;text-decoration:none;border:1px solid var(--border);background:var(--bg3);transition:border-color 0.2s}
 .pshot:hover{border-color:var(--str)}
 .pshot img{width:100%;display:block}
@@ -213,6 +217,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   .nav-logo{margin-right:0}
   .hamburger{display:flex}
   .plinks{flex-wrap:wrap}
+  .orow{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -240,25 +245,26 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero">
-  <div class="hero-comment fu">// C++ Graphics &amp; Java Backend Engineer</div>
+  <div class="hero-comment fu">// Java Backend &amp; C++ Engineer</div>
+  <div class="hero-name fu">成 禹欣<span>／ 2027年3月卒業見込み</span></div>
   <div class="hero-block">
     <span class="hl fu"><span class="hl-kw">const</span> <span class="hl-type">engineer</span> <span class="hl-punct">= {</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">graphics</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">],</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">backend</span><span class="hl-punct">: [</span><span class="hl-str">"Java"</span><span class="hl-punct">, </span><span class="hl-str">"Spring Boot"</span><span class="hl-punct">]</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">backend</span><span class="hl-punct">: [</span><span class="hl-str">"Java"</span><span class="hl-punct">, </span><span class="hl-str">"Spring Boot"</span><span class="hl-punct">],</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">graphics</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">]</span></span>
     <span class="hl fu"><span class="hl-punct">};</span></span>
   </div>
   <p class="hero-desc fu">
-    C++ / DirectX 12でリアルタイム海洋シミュレーションや自作エンジンを開発。Java / Spring Bootでは、JWT認証付きのREST APIを設計からDocker環境まで一人で構築しました。
+    Java / Spring Bootで、JWT認証付きのREST APIを設計からDocker環境まで一人で構築。C++ / DirectX 12では、リアルタイム海洋シミュレーションや自作エンジンを開発してきました。
   </p>
   <div class="hero-tags fu">
+    <span class="htag fn">Java</span>
+    <span class="htag st">Spring Boot</span>
+    <span class="htag kw">REST API</span>
     <span class="htag fn">C++</span>
     <span class="htag st">DirectX 12</span>
     <span class="htag st">HLSL</span>
     <span class="htag kw">Unreal Engine</span>
     <span class="htag kw">FFT Ocean</span>
-    <span class="htag fn">Java</span>
-    <span class="htag st">Spring Boot</span>
-    <span class="htag kw">REST API</span>
   </div>
   <div class="cta-row fu">
     <a href="#projects" class="btn btn-p">view projects()</a>
@@ -325,11 +331,11 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
-  <!-- PROJECT 02 — featured -->
-  <div class="pcard featured reveal">
+  <!-- PROJECT 02 -->
+  <div class="pcard reveal reveal-d1">
     <div class="phead">
       <div>
-        <div class="pnum">// 02 — <span class="featured-badge">featured</span></div>
+        <div class="pnum">// 02</div>
         <div class="ptitle">D3D12HelloOcean</div>
         <div class="psub">DirectX 12 · JONSWAP FFT Ocean · Full Post-Processing Pipeline · PBR Ship</div>
       </div>
@@ -389,102 +395,10 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   </div>
 
   <!-- PROJECT 03 -->
-  <div class="pcard reveal reveal-d1">
-    <div class="phead">
-      <div>
-        <div class="pnum">// 03</div>
-        <div class="ptitle">3D Action RPG — Custom DX11 Engine</div>
-        <div class="psub">DirectX 11 · Skeletal Animation · Boss AI · Quadrant Arena System</div>
-      </div>
-      <div class="plinks">
-        <a href="https://github.com/bourbon-love/3D_ActionGame" target="_blank" class="plnk">GitHub ↗</a>
-      </div>
-    </div>
-    <div class="pbody">
-      <div>
-        <a href="https://youtu.be/9BKswS41NkY" target="_blank" class="yt-thumb">
-          <img src="https://img.youtube.com/vi/9BKswS41NkY/hqdefault.jpg" alt="3D Action RPG demo">
-          <div class="yt-play">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"/></svg>
-            <span class="yt-label">// watch on YouTube</span>
-          </div>
-        </a>
-        <p class="pdesc">
-          C++とDirectX 11で自作したハック＆スラッシュRPG。4エリア構成のアリーナ進行に、エネルギー管理付き飛剣コンボシステム、3フェーズボス戦、Assimpスケルタルアニメーションブレンドコントローラーを実装。
-        </p>
-      </div>
-      <ul class="flist">
-        <li>飛剣コンボ：Thrust / Uppercut / Sweep / Circle Sweep</li>
-        <li>万剣斉発アルティメット（50エネルギー消費）</li>
-        <li>パリィシステム + ボスディフェンスブレイク</li>
-        <li>3フェーズボスAI（IDLE/PATROL/CHASE/COMBAT状態機械）</li>
-        <li>Assimpスケルタルアニメーション + ブレンドコントローラー</li>
-        <li>2パスレンダリング + 5描画レイヤー構成</li>
-        <li>Sphere / Box / Arc コライダーマネージャー</li>
-        <li>XAudio2 ボス戦専用BGM切替システム</li>
-        <li>五行エレメント切替 + インベントリシステム</li>
-      </ul>
-    </div>
-    <div class="ptags">
-      <span class="tag st">DirectX 11</span>
-      <span class="tag st">HLSL</span>
-      <span class="tag fn">C++20</span>
-      <span class="tag kw">Skeletal Animation</span>
-      <span class="tag kw">Boss AI FSM</span>
-      <span class="tag tp">Assimp</span>
-      <span class="tag tp">XAudio2</span>
-    </div>
-  </div>
-
-  <!-- PROJECT 04 -->
   <div class="pcard reveal reveal-d2">
     <div class="phead">
       <div>
-        <div class="pnum">// 04</div>
-        <div class="ptitle">3D Mine Game</div>
-        <div class="psub">DirectX 11 · Tactical · Multiplayer · Map Editor</div>
-      </div>
-      <div class="plinks">
-        <a href="https://github.com/bourbon-love/3DMINEGAME" target="_blank" class="plnk">GitHub ↗</a>
-      </div>
-    </div>
-    <div class="pbody">
-      <div>
-        <a href="https://youtu.be/4HiV34tTbH0" target="_blank" class="yt-thumb">
-          <img src="https://img.youtube.com/vi/4HiV34tTbH0/hqdefault.jpg" alt="3D Mine Game demo">
-          <div class="yt-play">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#fff" stroke="none"/></svg>
-            <span class="yt-label">// watch on YouTube</span>
-          </div>
-        </a>
-        <p class="pdesc">
-          マインスイーパーコンセプトから発展させた3Dタクティカルゲーム。シングルプレイ（15×15）・最大4人マルチプレイバトル（30×30）・インゲームマップエディターを実装。手書きHLSLシェーダーとレンダーテクスチャ2パスパイプライン。
-        </p>
-      </div>
-      <ul class="flist">
-        <li>タイルベース地形：氷（滑走）・砂（減速）・草（HP回復）・水（ダメージ）</li>
-        <li>4人ターン制マルチプレイ + 移動ポイントシステム</li>
-        <li>インゲームマップエディター（リアルタイム地形切替・保存）</li>
-        <li>4キャラクター手続き生成（外部モデルファイル不要）</li>
-        <li>手書きHLSL + レンダーテクスチャ2パスパイプライン</li>
-        <li>DirectInput 8 キーボード + DirectX Mouseマウス入力</li>
-      </ul>
-    </div>
-    <div class="ptags">
-      <span class="tag st">DirectX 11</span>
-      <span class="tag st">HLSL</span>
-      <span class="tag fn">C++</span>
-      <span class="tag kw">Multiplayer</span>
-      <span class="tag kw">Map Editor</span>
-      <span class="tag tp">Procedural Geometry</span>
-    </div>
-  </div>
-
-  <!-- PROJECT 05 -->
-  <div class="pcard reveal reveal-d3">
-    <div class="phead">
-      <div>
-        <div class="pnum">// 05</div>
+        <div class="pnum">// 03</div>
         <div class="ptitle">DX12 ECS — Vampire Survivors Demo</div>
         <div class="psub">DirectX 12 · EnTT ECS · Thread Pool · GPU Frustum Culling</div>
       </div>
@@ -519,6 +433,19 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
+  <!-- OTHER WORKS -->
+  <div class="others reveal">
+    <div class="pnum">// その他の作品</div>
+    <div class="orow">
+      <div><div class="otitle">3D Action RPG — Custom DX11 Engine</div><div class="osub">C++ / DirectX 11 · スケルタルアニメーション · 3フェーズボスAI</div></div>
+      <div class="plinks"><a href="https://youtu.be/9BKswS41NkY" target="_blank" class="plnk">Video ↗</a><a href="https://github.com/bourbon-love/3D_ActionGame" target="_blank" class="plnk">GitHub ↗</a></div>
+    </div>
+    <div class="orow">
+      <div><div class="otitle">3D Mine Game</div><div class="osub">C++ / DirectX 11 · 4人マルチプレイ · マップエディター</div></div>
+      <div class="plinks"><a href="https://youtu.be/4HiV34tTbH0" target="_blank" class="plnk">Video ↗</a><a href="https://github.com/bourbon-love/3DMINEGAME" target="_blank" class="plnk">GitHub ↗</a></div>
+    </div>
+  </div>
+
   <div style="color:var(--comment);font-size:12px;margin-top:0.5rem" class="reveal">}</div>
 </section>
 
@@ -530,11 +457,20 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <h2 class="reveal"><span class="h-kw">const</span> <span class="h-fn">skills</span> <span style="color:var(--muted)">=</span> [</h2>
   <div class="sgrid reveal">
     <div class="sgroup">
+      <div class="stitle">Backend</div>
+      <div class="sitem md">Spring Boot<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem md">REST API 設計<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem">Spring Security / JWT<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">MySQL / JPA<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">Docker / Compose<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">JUnit 5 / Mockito<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+    </div>
+    <div class="sgroup">
       <div class="stitle">Languages</div>
       <div class="sitem hi">C++<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
+      <div class="sitem md">Java<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
       <div class="sitem hi">HLSL<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="sitem md">C<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
-      <div class="sitem md">Java<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Graphics API</div>
@@ -564,15 +500,6 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <div class="sitem">WinSock TCP/UDP<span class="prof"><i class="on"></i><i></i><i></i></span></div>
     </div>
     <div class="sgroup">
-      <div class="stitle">Backend</div>
-      <div class="sitem md">Spring Boot<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
-      <div class="sitem md">REST API 設計<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
-      <div class="sitem">Spring Security / JWT<span class="prof"><i class="on"></i><i></i><i></i></span></div>
-      <div class="sitem">MySQL / JPA<span class="prof"><i class="on"></i><i></i><i></i></span></div>
-      <div class="sitem">Docker / Compose<span class="prof"><i class="on"></i><i></i><i></i></span></div>
-      <div class="sitem">JUnit 5 / Mockito<span class="prof"><i class="on"></i><i></i><i></i></span></div>
-    </div>
-    <div class="sgroup">
       <div class="stitle">Tools</div>
       <div class="sitem hi">Git / GitHub<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="sitem hi">Visual Studio<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
@@ -586,12 +513,8 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <div class="sitem">英語（読解・日常会話）<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
-      <div class="stitle">// Always Learning</div>
-      <div class="sitem">Vulkan</div>
-      <div class="sitem">DXR Ray Tracing</div>
-      <div class="sitem">Mesh Shaders</div>
-      <div class="sitem">Physically Based Sim</div>
-      <div class="sitem" style="color:var(--comment);font-style:italic">more...</div>
+      <div class="stitle">// Currently Learning</div>
+      <div class="sitem">基本情報技術者試験（学習中）</div>
     </div>
   </div>
   <div style="color:var(--comment);font-size:12px;margin-top:1rem" class="reveal">];</div>
@@ -665,7 +588,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <div class="sec-comment reveal">/* 06 — contact */</div>
   <h2 class="reveal"><span class="h-fn">contact</span><span style="color:var(--muted)">()</span> {</h2>
   <div class="cinner reveal">
-    <p class="atext" style="max-width:400px">グラフィックスエンジニア・エンジンプログラマー、およびJavaバックエンドエンジニアのポジションを探しています。お気軽にご連絡ください。</p>
+    <p class="atext" style="max-width:400px">Webシステム・業務システム開発のエンジニアとして、2027年4月より就業可能です。お気軽にご連絡ください。</p>
     <div class="clinks">
       <a href="mailto:chengyuxin0127@gmail.com" class="clnk">
         <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -681,7 +604,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 </section>
 
 <footer>
-  <span class="fcopy">// © 2027 — C++ Graphics &amp; Java Backend Engineer</span>
+  <span class="fcopy">// © 2027 — Java Backend &amp; C++ Engineer</span>
   <span class="fcopy">Built with HTML · GitHub Pages</span>
   <a href="#hero" class="back-top">↑ top</a>
 </footer>
