@@ -108,9 +108,11 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .tag.fn{border-color:rgba(200,164,110,0.3);color:var(--fn)}
 .tag.tp{border-color:rgba(106,159,216,0.3);color:var(--type)}
 .pbody>*{min-width:0}
-.pcode{margin-top:1rem;padding:0.85rem 1rem;background:var(--bg3);border:1px solid var(--border);font-size:11px;line-height:1.8;color:var(--muted);overflow-x:auto;white-space:pre}
-.pcode .m{color:var(--kw)}
-.pcode .c{color:var(--comment)}
+.pshot{display:block;margin-bottom:0.75rem;text-decoration:none;border:1px solid var(--border);background:var(--bg3);transition:border-color 0.2s}
+.pshot:hover{border-color:var(--str)}
+.pshot img{width:100%;display:block}
+.pshot-label{display:block;padding:4px 10px;font-size:10px;letter-spacing:0.08em;color:var(--comment);border-top:1px solid var(--border)}
+.pshot+.pdesc{margin-top:0.25rem}
 
 /* video embed */
 .vph{background:var(--bg3);border:1px dashed var(--border2);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--comment);font-size:11px;margin-bottom:1rem;letter-spacing:0.05em}
@@ -277,11 +279,63 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <div class="sec-comment reveal">/* 02 — work */</div>
   <h2 class="reveal"><span class="h-kw">function</span> <span class="h-fn">projects</span>() {</h2>
 
-  <!-- PROJECT 01 — featured -->
+  <!-- PROJECT 01 -->
+  <div class="pcard reveal">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 01 — backend</div>
+        <div class="ptitle">Task Manager API</div>
+        <div class="psub">Java · Spring Boot · JWT Auth · MySQL · Docker Compose</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/task-manager" target="_blank" class="plnk">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <a href="task_manager_swagger.png" target="_blank" class="pshot">
+          <img src="task_manager_swagger.png" alt="Swagger UI: Task Manager API endpoint list">
+          <span class="pshot-label">// Swagger UI — エンドポイント一覧</span>
+        </a>
+        <a href="task_manager_response.png" target="_blank" class="pshot">
+          <img src="task_manager_response.png" alt="Swagger UI: GET /api/tasks response with JWT">
+          <span class="pshot-label">// JWT認証後の実行結果（200 OK）</span>
+        </a>
+        <p class="pdesc">
+          Spring BootとMySQLで構築したタスク管理REST API。JWTによるステートレス認証を実装し、ユーザーは自分のタスクのみを作成・閲覧・更新・削除できます。Docker Composeによりアプリとデータベースをコマンド1つで起動でき、Swagger UIからブラウザ上でAPIを試せます。C++の経験をベースに、Spring Bootをゼロから学んで開発しました。
+        </p>
+      </div>
+      <ul class="flist">
+        <li>JWT + Spring Securityによるステートレス認証、BCryptでパスワードをハッシュ化</li>
+        <li>ユーザーごとのデータ分離：所有者条件付きクエリで他人のタスクを操作不可</li>
+        <li>他人のタスクには404を返し、存在の有無を推測させない設計</li>
+        <li>Controller / Service / Repository のレイヤード構成、EntityとDTOの分離</li>
+        <li>Bean Validationによる入力チェック、原因に応じたHTTPステータス（400 / 401 / 404 / 405）</li>
+        <li>@RestControllerAdvice による統一JSONエラーレスポンス</li>
+        <li>JUnit 5 + Mockito の単体テスト、H2でDBなしでもテスト実行可能</li>
+        <li>Dockerマルチステージビルド + MySQLヘルスチェック、秘密情報は .env で管理</li>
+        <li>Swagger UI（OpenAPI）でJWT認証付きAPIをブラウザから実行可能</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag fn">Java 17</span>
+      <span class="tag st">Spring Boot 4</span>
+      <span class="tag st">Spring Security</span>
+      <span class="tag kw">JWT</span>
+      <span class="tag kw">REST API</span>
+      <span class="tag st">Spring Data JPA</span>
+      <span class="tag tp">MySQL 8</span>
+      <span class="tag tp">Docker Compose</span>
+      <span class="tag tp">JUnit 5 / Mockito</span>
+      <span class="tag tp">Swagger</span>
+    </div>
+  </div>
+
+  <!-- PROJECT 02 — featured -->
   <div class="pcard featured reveal">
     <div class="phead">
       <div>
-        <div class="pnum">// 01 — <span class="featured-badge">featured</span></div>
+        <div class="pnum">// 02 — <span class="featured-badge">featured</span></div>
         <div class="ptitle">D3D12HelloOcean</div>
         <div class="psub">DirectX 12 · JONSWAP FFT Ocean · Full Post-Processing Pipeline · PBR Ship</div>
       </div>
@@ -340,11 +394,11 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
-  <!-- PROJECT 02 -->
+  <!-- PROJECT 03 -->
   <div class="pcard reveal reveal-d1">
     <div class="phead">
       <div>
-        <div class="pnum">// 02</div>
+        <div class="pnum">// 03</div>
         <div class="ptitle">3D Action RPG — Custom DX11 Engine</div>
         <div class="psub">DirectX 11 · Skeletal Animation · Boss AI · Quadrant Arena System</div>
       </div>
@@ -388,11 +442,11 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
-  <!-- PROJECT 03 -->
+  <!-- PROJECT 04 -->
   <div class="pcard reveal reveal-d2">
     <div class="phead">
       <div>
-        <div class="pnum">// 03</div>
+        <div class="pnum">// 04</div>
         <div class="ptitle">3D Mine Game</div>
         <div class="psub">DirectX 11 · Tactical · Multiplayer · Map Editor</div>
       </div>
@@ -432,11 +486,11 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
-  <!-- PROJECT 04 -->
+  <!-- PROJECT 05 -->
   <div class="pcard reveal reveal-d3">
     <div class="phead">
       <div>
-        <div class="pnum">// 04</div>
+        <div class="pnum">// 05</div>
         <div class="ptitle">DX12 ECS — Vampire Survivors Demo</div>
         <div class="psub">DirectX 12 · EnTT ECS · Thread Pool · GPU Frustum Culling</div>
       </div>
@@ -468,58 +522,6 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <span class="tag kw">GPU Culling</span>
       <span class="tag kw">ExecuteIndirect</span>
       <span class="tag tp">Multi-threading</span>
-    </div>
-  </div>
-
-  <!-- PROJECT 05 -->
-  <div class="pcard reveal reveal-d1">
-    <div class="phead">
-      <div>
-        <div class="pnum">// 05 — backend</div>
-        <div class="ptitle">Task Manager API</div>
-        <div class="psub">Java · Spring Boot · JWT Auth · MySQL · Docker Compose</div>
-      </div>
-      <div class="plinks">
-        <a href="https://github.com/bourbon-love/task-manager" target="_blank" class="plnk">GitHub ↗</a>
-      </div>
-    </div>
-    <div class="pbody">
-      <div>
-        <p class="pdesc">
-          Spring BootとMySQLで構築したタスク管理REST API。JWTによるステートレス認証を実装し、ユーザーは自分のタスクのみを作成・閲覧・更新・削除できます。Docker Composeによりアプリとデータベースをコマンド1つで起動でき、Swagger UIからブラウザ上でAPIを試せます。C++の経験をベースに、Spring Bootをゼロから学んで開発しました。
-        </p>
-<pre class="pcode"><span class="c">// public</span>
-<span class="m">POST  </span> /api/auth/register
-<span class="m">POST  </span> /api/auth/login
-<span class="c">// Authorization: Bearer &lt;JWT&gt;</span>
-<span class="m">GET   </span> /api/tasks
-<span class="m">POST  </span> /api/tasks
-<span class="m">PUT   </span> /api/tasks/{id}
-<span class="m">DELETE</span> /api/tasks/{id}</pre>
-      </div>
-      <ul class="flist">
-        <li>JWT + Spring Securityによるステートレス認証、BCryptでパスワードをハッシュ化</li>
-        <li>ユーザーごとのデータ分離：所有者条件付きクエリで他人のタスクを操作不可</li>
-        <li>他人のタスクには404を返し、存在の有無を推測させない設計</li>
-        <li>Controller / Service / Repository のレイヤード構成、EntityとDTOの分離</li>
-        <li>Bean Validationによる入力チェック、原因に応じたHTTPステータス（400 / 401 / 404 / 405）</li>
-        <li>@RestControllerAdvice による統一JSONエラーレスポンス</li>
-        <li>JUnit 5 + Mockito の単体テスト、H2でDBなしでもテスト実行可能</li>
-        <li>Dockerマルチステージビルド + MySQLヘルスチェック、秘密情報は .env で管理</li>
-        <li>Swagger UI（OpenAPI）でJWT認証付きAPIをブラウザから実行可能</li>
-      </ul>
-    </div>
-    <div class="ptags">
-      <span class="tag fn">Java 17</span>
-      <span class="tag st">Spring Boot 4</span>
-      <span class="tag st">Spring Security</span>
-      <span class="tag kw">JWT</span>
-      <span class="tag kw">REST API</span>
-      <span class="tag st">Spring Data JPA</span>
-      <span class="tag tp">MySQL 8</span>
-      <span class="tag tp">Docker Compose</span>
-      <span class="tag tp">JUnit 5 / Mockito</span>
-      <span class="tag tp">Swagger</span>
     </div>
   </div>
 
