@@ -57,11 +57,11 @@ nav a.lnk.active::before{color:var(--str)}
 .hero-comment{font-size:12px;color:var(--comment);margin-bottom:1.5rem;letter-spacing:0.04em}
 .hero-block{margin-bottom:2rem}
 .hl{display:block;line-height:1.25}
-.hl-kw{color:var(--kw);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
-.hl-fn{color:var(--fn);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
-.hl-str{color:var(--str);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
-.hl-type{color:var(--type);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:600}
-.hl-punct{color:var(--muted);font-size:clamp(1.6rem,4vw,2.6rem);font-weight:400}
+.hl-kw{color:var(--kw);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
+.hl-fn{color:var(--fn);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
+.hl-str{color:var(--str);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
+.hl-type{color:var(--type);font-size:clamp(1.15rem,3vw,2rem);font-weight:600}
+.hl-punct{color:var(--muted);font-size:clamp(1.15rem,3vw,2rem);font-weight:400}
 .hero-desc{font-size:13px;color:var(--muted);max-width:520px;line-height:1.85;margin-bottom:2rem;font-family:var(--sans);font-weight:300}
 .hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
 .htag{font-size:11px;padding:3px 10px;border:1px solid var(--border2);color:var(--muted);letter-spacing:0.05em}
@@ -243,25 +243,19 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <div class="hero-comment fu">// C++ Graphics &amp; Java Backend Engineer</div>
   <div class="hero-block">
     <span class="hl fu"><span class="hl-kw">const</span> <span class="hl-type">engineer</span> <span class="hl-punct">= {</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"C"</span><span class="hl-punct">, </span><span class="hl-str">"C#"</span><span class="hl-punct">, </span><span class="hl-str">"Java"</span><span class="hl-punct">],</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">api</span><span class="hl-punct">: [</span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 11"</span><span class="hl-punct">, </span><span class="hl-str">"Unreal Engine"</span><span class="hl-punct">],</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">backend</span><span class="hl-punct">: [</span><span class="hl-str">"Spring Boot"</span><span class="hl-punct">, </span><span class="hl-str">"MySQL"</span><span class="hl-punct">, </span><span class="hl-str">"Docker"</span><span class="hl-punct">],</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">research</span><span class="hl-punct">: [</span><span class="hl-str">"FFT ocean simulation"</span><span class="hl-punct">, </span><span class="hl-str">"ECS / GPU systems"</span><span class="hl-punct">]</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">graphics</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">],</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">backend</span><span class="hl-punct">: [</span><span class="hl-str">"Java"</span><span class="hl-punct">, </span><span class="hl-str">"Spring Boot"</span><span class="hl-punct">]</span></span>
     <span class="hl fu"><span class="hl-punct">};</span></span>
   </div>
   <p class="hero-desc fu">
-    C++を主軸に、DirectX 12 / 11・Unreal Engineでグラフィックスプログラミングとエンジン開発を研究。FFTベースのリアルタイム海洋シミュレーション・自作3Dエンジン・Unrealでのゲーム制作まで、低レイヤーから応用まで一貫して実装してきました。また、C++の経験を土台にJava / Spring Bootを独学し、JWT認証付きのREST APIをDocker環境で動く形まで完成させました。
+    C++ / DirectX 12でリアルタイム海洋シミュレーションや自作エンジンを開発。Java / Spring Bootでは、JWT認証付きのREST APIを設計からDocker環境まで一人で構築しました。
   </p>
   <div class="hero-tags fu">
     <span class="htag fn">C++</span>
     <span class="htag st">DirectX 12</span>
-    <span class="htag st">DirectX 11</span>
     <span class="htag st">HLSL</span>
     <span class="htag kw">Unreal Engine</span>
     <span class="htag kw">FFT Ocean</span>
-    <span class="htag kw">Custom Engine</span>
-    <span class="htag">GPU Skinning</span>
-    <span class="htag">ECS</span>
     <span class="htag fn">Java</span>
     <span class="htag st">Spring Boot</span>
     <span class="htag kw">REST API</span>
