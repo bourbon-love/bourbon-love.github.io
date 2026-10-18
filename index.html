@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio — C++ Engine & Systems Programmer</title>
+<title>Portfolio — C++ Graphics & Java Backend Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -107,6 +107,10 @@ hr.div{border:none;border-top:1px solid var(--border);margin:0}
 .tag.st{border-color:rgba(122,184,160,0.3);color:var(--str)}
 .tag.fn{border-color:rgba(200,164,110,0.3);color:var(--fn)}
 .tag.tp{border-color:rgba(106,159,216,0.3);color:var(--type)}
+.pbody>*{min-width:0}
+.pcode{margin-top:1rem;padding:0.85rem 1rem;background:var(--bg3);border:1px solid var(--border);font-size:11px;line-height:1.8;color:var(--muted);overflow-x:auto;white-space:pre}
+.pcode .m{color:var(--kw)}
+.pcode .c{color:var(--comment)}
 
 /* video embed */
 .vph{background:var(--bg3);border:1px dashed var(--border2);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--comment);font-size:11px;margin-bottom:1rem;letter-spacing:0.05em}
@@ -234,16 +238,17 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section id="hero">
-  <div class="hero-comment fu">// C++ Engine &amp; Systems Programmer</div>
+  <div class="hero-comment fu">// C++ Graphics &amp; Java Backend Engineer</div>
   <div class="hero-block">
     <span class="hl fu"><span class="hl-kw">const</span> <span class="hl-type">engineer</span> <span class="hl-punct">= {</span></span>
-    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"C"</span><span class="hl-punct">, </span><span class="hl-str">"C#"</span><span class="hl-punct">],</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">language</span><span class="hl-punct">: [</span><span class="hl-str">"C++"</span><span class="hl-punct">, </span><span class="hl-str">"C"</span><span class="hl-punct">, </span><span class="hl-str">"C#"</span><span class="hl-punct">, </span><span class="hl-str">"Java"</span><span class="hl-punct">],</span></span>
     <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">api</span><span class="hl-punct">: [</span><span class="hl-str">"DirectX 12"</span><span class="hl-punct">, </span><span class="hl-str">"DirectX 11"</span><span class="hl-punct">, </span><span class="hl-str">"Unreal Engine"</span><span class="hl-punct">],</span></span>
+    <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">backend</span><span class="hl-punct">: [</span><span class="hl-str">"Spring Boot"</span><span class="hl-punct">, </span><span class="hl-str">"MySQL"</span><span class="hl-punct">, </span><span class="hl-str">"Docker"</span><span class="hl-punct">],</span></span>
     <span class="hl fu" style="padding-left:1.5rem"><span class="hl-fn">research</span><span class="hl-punct">: [</span><span class="hl-str">"FFT ocean simulation"</span><span class="hl-punct">, </span><span class="hl-str">"ECS / GPU systems"</span><span class="hl-punct">]</span></span>
     <span class="hl fu"><span class="hl-punct">};</span></span>
   </div>
   <p class="hero-desc fu">
-    C++を主軸に、DirectX 12 / 11・Unreal Engineでグラフィックスプログラミングとエンジン開発を研究。FFTベースのリアルタイム海洋シミュレーション・自作3Dエンジン・Unrealでのゲーム制作まで、低レイヤーから応用まで一貫して実装してきました。
+    C++を主軸に、DirectX 12 / 11・Unreal Engineでグラフィックスプログラミングとエンジン開発を研究。FFTベースのリアルタイム海洋シミュレーション・自作3Dエンジン・Unrealでのゲーム制作まで、低レイヤーから応用まで一貫して実装してきました。また、C++の経験を土台にJava / Spring Bootを独学し、JWT認証付きのREST APIをDocker環境で動く形まで完成させました。
   </p>
   <div class="hero-tags fu">
     <span class="htag fn">C++</span>
@@ -255,6 +260,9 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     <span class="htag kw">Custom Engine</span>
     <span class="htag">GPU Skinning</span>
     <span class="htag">ECS</span>
+    <span class="htag fn">Java</span>
+    <span class="htag st">Spring Boot</span>
+    <span class="htag kw">REST API</span>
   </div>
   <div class="cta-row fu">
     <a href="#projects" class="btn btn-p">view projects()</a>
@@ -463,6 +471,58 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     </div>
   </div>
 
+  <!-- PROJECT 05 -->
+  <div class="pcard reveal reveal-d1">
+    <div class="phead">
+      <div>
+        <div class="pnum">// 05 — backend</div>
+        <div class="ptitle">Task Manager API</div>
+        <div class="psub">Java · Spring Boot · JWT Auth · MySQL · Docker Compose</div>
+      </div>
+      <div class="plinks">
+        <a href="https://github.com/bourbon-love/task-manager" target="_blank" class="plnk">GitHub ↗</a>
+      </div>
+    </div>
+    <div class="pbody">
+      <div>
+        <p class="pdesc">
+          Spring BootとMySQLで構築したタスク管理REST API。JWTによるステートレス認証を実装し、ユーザーは自分のタスクのみを作成・閲覧・更新・削除できます。Docker Composeによりアプリとデータベースをコマンド1つで起動でき、Swagger UIからブラウザ上でAPIを試せます。C++の経験をベースに、Spring Bootをゼロから学んで開発しました。
+        </p>
+<pre class="pcode"><span class="c">// public</span>
+<span class="m">POST  </span> /api/auth/register
+<span class="m">POST  </span> /api/auth/login
+<span class="c">// Authorization: Bearer &lt;JWT&gt;</span>
+<span class="m">GET   </span> /api/tasks
+<span class="m">POST  </span> /api/tasks
+<span class="m">PUT   </span> /api/tasks/{id}
+<span class="m">DELETE</span> /api/tasks/{id}</pre>
+      </div>
+      <ul class="flist">
+        <li>JWT + Spring Securityによるステートレス認証、BCryptでパスワードをハッシュ化</li>
+        <li>ユーザーごとのデータ分離：所有者条件付きクエリで他人のタスクを操作不可</li>
+        <li>他人のタスクには404を返し、存在の有無を推測させない設計</li>
+        <li>Controller / Service / Repository のレイヤード構成、EntityとDTOの分離</li>
+        <li>Bean Validationによる入力チェック、原因に応じたHTTPステータス（400 / 401 / 404 / 405）</li>
+        <li>@RestControllerAdvice による統一JSONエラーレスポンス</li>
+        <li>JUnit 5 + Mockito の単体テスト、H2でDBなしでもテスト実行可能</li>
+        <li>Dockerマルチステージビルド + MySQLヘルスチェック、秘密情報は .env で管理</li>
+        <li>Swagger UI（OpenAPI）でJWT認証付きAPIをブラウザから実行可能</li>
+      </ul>
+    </div>
+    <div class="ptags">
+      <span class="tag fn">Java 17</span>
+      <span class="tag st">Spring Boot 4</span>
+      <span class="tag st">Spring Security</span>
+      <span class="tag kw">JWT</span>
+      <span class="tag kw">REST API</span>
+      <span class="tag st">Spring Data JPA</span>
+      <span class="tag tp">MySQL 8</span>
+      <span class="tag tp">Docker Compose</span>
+      <span class="tag tp">JUnit 5 / Mockito</span>
+      <span class="tag tp">Swagger</span>
+    </div>
+  </div>
+
   <div style="color:var(--comment);font-size:12px;margin-top:0.5rem" class="reveal">}</div>
 </section>
 
@@ -478,6 +538,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <div class="sitem hi">C++<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="sitem hi">HLSL<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="sitem md">C<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem md">Java<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Graphics API</div>
@@ -505,6 +566,15 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
       <div class="sitem hi">Async Asset Loading<span class="prof"><i class="on"></i><i class="on"></i><i class="on"></i></span></div>
       <div class="sitem md">XAudio2<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
       <div class="sitem">WinSock TCP/UDP<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+    </div>
+    <div class="sgroup">
+      <div class="stitle">Backend</div>
+      <div class="sitem md">Spring Boot<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem md">REST API 設計<span class="prof"><i class="on"></i><i class="on"></i><i></i></span></div>
+      <div class="sitem">Spring Security / JWT<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">MySQL / JPA<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">Docker / Compose<span class="prof"><i class="on"></i><i></i><i></i></span></div>
+      <div class="sitem">JUnit 5 / Mockito<span class="prof"><i class="on"></i><i></i><i></i></span></div>
     </div>
     <div class="sgroup">
       <div class="stitle">Tools</div>
@@ -550,15 +620,15 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
     <div class="tentry current">
       <div class="tdate">2023.05 — 在職中 <span class="ttype">職歴</span></div>
       <div class="ttitle">マルエツ 菊川店</div>
-      <div class="trole">アルバイト（4年次）</div>
+      <div class="trole">アルバイト</div>
       <div class="tdesc">日本企業のビジネスマナー・報連相・上下関係を実践で習得。継続勤務の実績から店長よりリーダー就任を打診される。</div>
     </div>
 
     <div class="tentry">
       <div class="tdate">2017.02 — 2022.01 <span class="ttype">職歴</span></div>
       <div class="ttitle">榆次晨虹油漆商店</div>
-      <div class="trole">マネージャー</div>
-      <div class="tdesc">接客・顧客関係維持・発注管理・人事・シフト管理など店舗運営全般を統括。限られたリソースの中で優先順位を判断し業務を遂行。</div>
+      <div class="trole">営業マネージャー</div>
+      <div class="tdesc">機械設備メーカーを中心とした法人顧客の新規開拓を担当。顧客の要望・予算と工場の製造条件をすり合わせ、仕様や数量を調整することで、予算内で実現できる最大限の品質を提案。</div>
     </div>
 
     <div class="tentry">
@@ -580,11 +650,11 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <h2 class="reveal"><span class="h-kw">type</span> <span class="h-fn">About</span> <span style="color:var(--muted)">=</span> {</h2>
   <div class="atext reveal">
     <span class="alabel c-st">// 職務経験</span>
-    <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において<span class="km c-st">法廷審理における調書作成・裁判文書の発行確認</span>など、正確性と責任感が強く求められる業務に従事しました。その後、小規模企業にて総務・一般事務を中心に幅広い業務を担当し、<span class="km c-st">限られたリソースの中で優先順位を判断</span>しながら業務を遂行する力を身につけました。</p>
+    <p>社会人として、これまで異なる環境で責任ある業務に継続して取り組んできました。中国では裁判所において<span class="km c-st">法廷審理における調書作成・裁判文書の発行確認</span>など、正確性と責任感が強く求められる業務に従事しました。その後、塗料販売店の<span class="km c-st">営業マネージャー</span>として5年間、機械設備メーカーなどの法人顧客を担当しました。顧客の要望・予算と工場の製造条件が合わない場面も多く、何を優先すべきかを確認したうえで工場と仕様や数量を調整し、<span class="km c-st">限られた条件の中で最適な提案</span>を行う調整力を身につけました。</p>
     <span class="alabel c-kw">// 来日後</span>
-    <p>来日後は同じ職場で<span class="km c-kw">4年間継続して勤務</span>しており、日本企業特有の<span class="km c-kw">ビジネスマナー・報連相</span>の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長より<span class="km c-kw">リーダーへの就任</span>を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。</p>
+    <p>来日後は同じ職場で<span class="km c-kw">3年以上継続して勤務</span>しており、日本企業特有の<span class="km c-kw">ビジネスマナー・報連相</span>の文化、上下関係を踏まえたコミュニケーションの取り方を実践の中で習得してきました。継続して誠実に業務に取り組んだ結果、店長より<span class="km c-kw">リーダーへの就任</span>を打診していただくなど、周囲からの信頼を積み重ねることができたと感じています。</p>
     <span class="alabel c-fn">// 技術姿勢</span>
-    <p>技術面においては、専門学校で<span class="km c-fn">C++</span>を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、<span class="km c-fn">複雑なシステムをゼロから実装</span>しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした<span class="km c-fn">自己学習と問題解決の姿勢</span>が、新しい技術スタックへの適応力の根拠になっていると考えています。</p>
+    <p>技術面においては、専門学校で<span class="km c-fn">C++</span>を中心に学びながら、英語・日本語の技術ドキュメントや論文を自ら調査し、<span class="km c-fn">複雑なシステムをゼロから実装</span>しました。問題に直面した際は処理の流れを整理し、原因を一つずつ切り分けて解決することを意識しており、こうした<span class="km c-fn">自己学習と問題解決の姿勢</span>が、新しい技術スタックへの適応力の根拠になっていると考えています。実際に、C++で培った設計の考え方を土台に<span class="km c-fn">Java / Spring Boot</span>を独学し、認証・データベース・テスト・Docker環境まで含めたREST APIを一人で完成させました。</p>
     <span class="alabel c-tp">// 今後の展望</span>
     <p>これまでの社会人経験で培った<span class="km c-tp">責任感・コミュニケーション能力・環境への適応力</span>と、自ら学び続ける姿勢を活かし、入社後は業務に必要な技術を積極的に習得しながら、<span class="km c-tp">チームの一員として早期に貢献</span>できるエンジニアとして成長していきたいと考えています。</p>
     <p class="avail">// 2027年4月より就業可能</p>
@@ -599,7 +669,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
   <div class="sec-comment reveal">/* 06 — contact */</div>
   <h2 class="reveal"><span class="h-fn">contact</span><span style="color:var(--muted)">()</span> {</h2>
   <div class="cinner reveal">
-    <p class="atext" style="max-width:400px">グラフィックスエンジニア・エンジンプログラマーのポジションを探しています。お気軽にご連絡ください。</p>
+    <p class="atext" style="max-width:400px">グラフィックスエンジニア・エンジンプログラマー、およびJavaバックエンドエンジニアのポジションを探しています。お気軽にご連絡ください。</p>
     <div class="clinks">
       <a href="mailto:chengyuxin0127@gmail.com" class="clnk">
         <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -615,7 +685,7 @@ footer{border-top:1px solid var(--border);padding:1.25rem 2rem;max-width:860px;m
 </section>
 
 <footer>
-  <span class="fcopy">// © 2027 — C++ Engine &amp; Systems Programmer</span>
+  <span class="fcopy">// © 2027 — C++ Graphics &amp; Java Backend Engineer</span>
   <span class="fcopy">Built with HTML · GitHub Pages</span>
   <a href="#hero" class="back-top">↑ top</a>
 </footer>
